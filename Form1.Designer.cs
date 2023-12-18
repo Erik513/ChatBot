@@ -34,8 +34,8 @@ namespace ChatBot
             this.pboxWindowMaximize = new System.Windows.Forms.PictureBox();
             this.pboxWindowMinimize = new System.Windows.Forms.PictureBox();
             this.pboxWindowClose = new System.Windows.Forms.PictureBox();
-            this.txtQuestion = new System.Windows.Forms.TextBox();
-            this.txtAnswer = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanelQuestions = new System.Windows.Forms.FlowLayoutPanel();
             this.panelLeiste.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxWindowMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxWindowMinimize)).BeginInit();
@@ -50,8 +50,9 @@ namespace ChatBot
             this.panelLeiste.Controls.Add(this.pboxWindowClose);
             this.panelLeiste.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLeiste.Location = new System.Drawing.Point(0, 0);
+            this.panelLeiste.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelLeiste.Name = "panelLeiste";
-            this.panelLeiste.Size = new System.Drawing.Size(800, 35);
+            this.panelLeiste.Size = new System.Drawing.Size(600, 28);
             this.panelLeiste.TabIndex = 1;
             // 
             // pboxWindowMaximize
@@ -59,9 +60,10 @@ namespace ChatBot
             this.pboxWindowMaximize.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pboxWindowMaximize.BackColor = System.Drawing.Color.Transparent;
             this.pboxWindowMaximize.Image = ((System.Drawing.Image)(resources.GetObject("pboxWindowMaximize.Image")));
-            this.pboxWindowMaximize.Location = new System.Drawing.Point(695, 3);
+            this.pboxWindowMaximize.Location = new System.Drawing.Point(521, 2);
+            this.pboxWindowMaximize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pboxWindowMaximize.Name = "pboxWindowMaximize";
-            this.pboxWindowMaximize.Size = new System.Drawing.Size(48, 29);
+            this.pboxWindowMaximize.Size = new System.Drawing.Size(36, 24);
             this.pboxWindowMaximize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pboxWindowMaximize.TabIndex = 4;
             this.pboxWindowMaximize.TabStop = false;
@@ -72,9 +74,10 @@ namespace ChatBot
             this.pboxWindowMinimize.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pboxWindowMinimize.BackColor = System.Drawing.Color.Transparent;
             this.pboxWindowMinimize.Image = ((System.Drawing.Image)(resources.GetObject("pboxWindowMinimize.Image")));
-            this.pboxWindowMinimize.Location = new System.Drawing.Point(641, 3);
+            this.pboxWindowMinimize.Location = new System.Drawing.Point(481, 2);
+            this.pboxWindowMinimize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pboxWindowMinimize.Name = "pboxWindowMinimize";
-            this.pboxWindowMinimize.Size = new System.Drawing.Size(48, 29);
+            this.pboxWindowMinimize.Size = new System.Drawing.Size(36, 24);
             this.pboxWindowMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pboxWindowMinimize.TabIndex = 4;
             this.pboxWindowMinimize.TabStop = false;
@@ -85,43 +88,45 @@ namespace ChatBot
             this.pboxWindowClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pboxWindowClose.BackColor = System.Drawing.Color.Transparent;
             this.pboxWindowClose.Image = ((System.Drawing.Image)(resources.GetObject("pboxWindowClose.Image")));
-            this.pboxWindowClose.Location = new System.Drawing.Point(749, 3);
+            this.pboxWindowClose.Location = new System.Drawing.Point(562, 2);
+            this.pboxWindowClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pboxWindowClose.Name = "pboxWindowClose";
-            this.pboxWindowClose.Size = new System.Drawing.Size(48, 29);
+            this.pboxWindowClose.Size = new System.Drawing.Size(36, 24);
             this.pboxWindowClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pboxWindowClose.TabIndex = 3;
             this.pboxWindowClose.TabStop = false;
             this.pboxWindowClose.Click += new System.EventHandler(this.FensterSchließen);
             // 
-            // txtQuestion
+            // txtSearch
             // 
-            this.txtQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuestion.Location = new System.Drawing.Point(12, 41);
-            this.txtQuestion.Name = "txtQuestion";
-            this.txtQuestion.Size = new System.Drawing.Size(776, 22);
-            this.txtQuestion.TabIndex = 2;
+            this.txtSearch.Location = new System.Drawing.Point(9, 33);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(583, 20);
+            this.txtSearch.TabIndex = 2;
             // 
-            // txtAnswer
+            // flowLayoutPanelQuestions
             // 
-            this.txtAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.flowLayoutPanelQuestions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAnswer.Location = new System.Drawing.Point(12, 69);
-            this.txtAnswer.Multiline = true;
-            this.txtAnswer.Name = "txtAnswer";
-            this.txtAnswer.Size = new System.Drawing.Size(776, 369);
-            this.txtAnswer.TabIndex = 3;
+            this.flowLayoutPanelQuestions.Location = new System.Drawing.Point(9, 58);
+            this.flowLayoutPanelQuestions.Name = "flowLayoutPanelQuestions";
+            this.flowLayoutPanelQuestions.Size = new System.Drawing.Size(583, 296);
+            this.flowLayoutPanelQuestions.TabIndex = 3;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtAnswer);
-            this.Controls.Add(this.txtQuestion);
+            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.flowLayoutPanelQuestions);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.panelLeiste);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panelLeiste.ResumeLayout(false);
@@ -138,8 +143,8 @@ namespace ChatBot
         private System.Windows.Forms.PictureBox pboxWindowClose;
         private System.Windows.Forms.PictureBox pboxWindowMaximize;
         private System.Windows.Forms.PictureBox pboxWindowMinimize;
-        private System.Windows.Forms.TextBox txtQuestion;
-        private System.Windows.Forms.TextBox txtAnswer;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelQuestions;
     }
 }
 
