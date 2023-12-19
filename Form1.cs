@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ChatBot
 {
@@ -118,9 +119,13 @@ namespace ChatBot
             "Team",
             "Tricks",
             "WuG",
-
         };
-
+        private UcQandA ucQandA1 = new UcQandA()
+        {
+            Location = new Point(9, 58),
+            Anchor = AnchorStyles.Left & AnchorStyles.Right & AnchorStyles.Top & AnchorStyles.Bottom,
+            Dock = DockStyle.Fill
+        };
         public Form1()
         {
             InitializeComponent();
@@ -134,6 +139,9 @@ namespace ChatBot
 
             txtSearch.TextChanged += TxtSearch_TextChanged;
 
+            Controls.Add(ucQandA1);
+            ucQandA1.Visible = false;
+
             faqList = new List<Tuple<string, string>>
             {
                 new Tuple<string, string>("Wie funktioniert die Anmeldung bei Moodle?", 
@@ -142,7 +150,7 @@ namespace ChatBot
                 "Wenn du dich in Moodle angemeldet hast, gehst du in den Fachbereich Informationstechnik und dann klickst du auf Fachinformatiker: innen & IT-Systemelektroniker: innen (HK) und dann auf Lernfelder."),
                 new Tuple<string, string>("Was ist Infotheke und wie komme ich drauf?", 
                 "Die Infotheke ist deine Lernplattform, wo die ganzen Informationen sind, die du brauchst, um dein Projekt zu bearbeiten oder um dein Wissen zu verstärken. Du findest sie in den Fachbereich Informationstechnik."),
-                new Tuple<string, string>("Wo finde ich meine Klassenkursbereich?", 
+                new Tuple<string, string>("Wo finde ich meinen Klassenkursbereich?", 
                 "Wenn du dich in Moodle angemeldet hast, gehst du in den Fachbereich Informationstechnik und dann klickst du auf Fachinformatiker: innen & IT-Systemelektroniker: innen (HK), dann Klassenbereiche."),
                 new Tuple<string, string>("Wo finde ich die Infos über die Ausbildung?", 
                 "Wenn du dich in Moodle angemeldet hast, gehst du in den Fachbereich Informationstechnik und dann klickst du auf Fachinformatiker: innen & IT-Systemelektroniker: innen (HK)."),
@@ -250,14 +258,22 @@ namespace ChatBot
 
             // Finde die passende Antwort zur ausgewählten Frage
             string selectedAnswer = faqList.FirstOrDefault(x => x.Item1 == selectedQuestion)?.Item2;
-
-            // Öffne ein neues Fenster mit der ausgewählten Frage und Antwort
-            ShowAnswerWindow(selectedQuestion, selectedAnswer);
+            ShowUcQandA(selectedQuestion, selectedAnswer);
         }
 
+        private void ShowUcQandA(string selectedQuestion, string selectedAnswer)
+        {
+            ucQandA1.Visible = true;
+            ucQandA1.BringToFront();
+            ucQandA1.SetText(selectedQuestion, selectedAnswer);
+        }
+        private void HideUcQandA()
+        {
+            ucQandA1.Visible = false;
+        }
         private void ShowAnswerWindow(string question, string answer)
         {
-            MessageBox.Show($"{question}\n\n{answer}", "Frage und Antwort");
+            //MessageBox.Show($"{question}\n\n{answer}", "Frage und Antwort");
         }
 
         private void txtQuestion_KeyPress(object sender, KeyPressEventArgs e)
@@ -267,6 +283,7 @@ namespace ChatBot
                 flowLayoutPanelQuestions.Visible = true;
                 AddQuestionButtons();
             }
+            HideUcQandA();
         }
 
         private void AddQuestionButtons()
